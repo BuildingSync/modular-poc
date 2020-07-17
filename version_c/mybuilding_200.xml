@@ -1,0 +1,62 @@
+<auc:Building
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:auc="http://buildingsync.net/schemas/bedes-auc/2019"
+    xsi:schemaLocation="http://buildingsync.net/schemas/bedes-auc/2019 BuildingSync_Location-200_Form-200.xsd">
+    <auc:Location>
+        <auc:CensusDivision>Mountain Division</auc:CensusDivision>
+        <auc:PostalCode>12345</auc:PostalCode>
+        <auc:City>Birmingham</auc:City>
+        <auc:State>AL</auc:State>
+    </auc:Location>
+    <auc:Form>
+        <auc:GrossFloorArea>100</auc:GrossFloorArea>
+        <auc:FootprintShape>Rectangular</auc:FootprintShape>
+        <auc:Floors>2</auc:Floors>
+    </auc:Form>
+    <!-- <Envelope>
+        <OverallWindowToWallRatio>0.1</OverallWindowToWallRatio>
+        <OverallUValue>2</OverallUValue>
+    </Envelope>
+    <ResourceUse>
+        <AnnualEnergyUse>123</AnnualEnergyUse>
+        <AnnualEnergyUseIntensity>123</AnnualEnergyUseIntensity>
+        <Meters>
+            <Meter>
+                <ResourceType>Electricity</ResourceType>
+                <IntervalReadings>
+                    <Reading>
+                        <IntervalTotal>123</IntervalTotal>
+                        <IntervalCost>1000</IntervalCost>
+                        <StartTimestamp>1-1-2020</StartTimestamp>
+                        <EndTimestamp>2-1-2020</EndTimestamp>
+                    </Reading>
+                    <Reading>
+                        <IntervalTotal>123</IntervalTotal>
+                        <IntervalCost>1000</IntervalCost>
+                        <StartTimestamp>2-1-2020</StartTimestamp>
+                        <EndTimestamp>3-1-2020</EndTimestamp>
+                    </Reading>
+                    <Reading>
+                        <IntervalTotal>123</IntervalTotal>
+                        <IntervalCost>1000</IntervalCost>
+                        <StartTimestamp>3-1-2020</StartTimestamp>
+                        <EndTimestamp>4-1-2020</EndTimestamp>
+                    </Reading>
+                </IntervalReadings>
+            </Meter>
+        </Meters>
+    </ResourceUse>
+    <Systems>
+        <HVACSystem>
+            <PrimaryType>Packaged Rooftop Air Conditioner</PrimaryType>
+            <HVACControlSystemTypes>
+                <HVACControlSystemType>Digital</HVACControlSystemType>
+            </HVACControlSystemTypes>
+        </HVACSystem>
+        <LightingSystem>
+            <LampType>
+                <Incandescent>A19</Incandescent>
+            </LampType>
+        </LightingSystem>
+    </Systems> -->
+</auc:Building>

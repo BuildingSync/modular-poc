@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:auc="http://buildingsync.net/schemas/bedes-auc/2019"
+    targetNamespace="http://buildingsync.net/schemas/bedes-auc/2019"
+    elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0">
+
+    <xs:include schemaLocation="./Location.xsd"></xs:include>
+    <xs:include schemaLocation="./Form.xsd"></xs:include>
+    <xs:include schemaLocation="./ResourceUse.xsd"></xs:include>
+    <xs:include schemaLocation="./Systems.xsd"></xs:include>
+
+    <xs:element name="Building" type="auc:BuildingType"></xs:element>
+
+    <xs:complexType name="BuildingType">
+        <xs:sequence>
+            <xs:element name="Location"></xs:element>
+            <xs:element name="Form"></xs:element>
+            <xs:choice minOccurs="0">
+                <xs:element name="ResourceUse"></xs:element>
+            </xs:choice>
+            <xs:choice minOccurs="0">
+                <xs:element name="Systems"></xs:element>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

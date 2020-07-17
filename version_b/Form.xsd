@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:auc="http://buildingsync.net/schemas/bedes-auc/2019" targetNamespace="http://buildingsync.net/schemas/bedes-auc/2019" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0">
+
+    <xs:complexType name="Form000Type">
+        <xs:sequence>
+            <xs:element name="GrossFloorArea" type="xs:positiveInteger"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Form100Type">
+        <xs:complexContent>
+            <xs:extension base="auc:Form000Type">
+                <xs:sequence>
+                    <xs:element name="FootprintShape" type="auc:FootprintShapeType"></xs:element>
+                    <xs:element name="Floors" type="xs:positiveInteger"></xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="Form200Type">
+        <xs:complexContent>
+            <xs:extension base="auc:Form100Type">
+                <xs:sequence>
+                    
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:simpleType name="FootprintShapeType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Rectangular"/>
+            <xs:enumeration value="L-Shape"/>
+            <xs:enumeration value="U-Shape"/>
+            <xs:enumeration value="H-Shape"/>
+            <xs:enumeration value="T-Shape"/>
+            <xs:enumeration value="O-Shape"/>
+            <xs:enumeration value="Other"/>
+            <xs:enumeration value="Unknown"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

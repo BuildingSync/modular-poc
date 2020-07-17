@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:auc="http://buildingsync.net/schemas/bedes-auc/2019"
+    targetNamespace="http://buildingsync.net/schemas/bedes-auc/2019"
+    elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0">
+
+    <xs:include schemaLocation="./Location.xsd"></xs:include>
+    <xs:include schemaLocation="./Form.xsd"></xs:include>
+    <xs:include schemaLocation="./ResourceUse.xsd"></xs:include>
+    <xs:include schemaLocation="./Systems.xsd"></xs:include>
+
+    <xs:element name="Building" type="auc:BuildingType"></xs:element>
+
+    <xs:complexType name="BuildingType">
+        <xs:sequence>
+            <xs:choice>
+                <xs:element name="Location000" type="auc:Location000Type"></xs:element>
+                <xs:element name="Location100" type="auc:Location100Type"></xs:element>
+                <xs:element name="Location200" type="auc:Location200Type"></xs:element>
+            </xs:choice>
+            <xs:choice>
+                <xs:element name="Form000" type="auc:Form000Type"></xs:element>
+                <xs:element name="Form100" type="auc:Form100Type"></xs:element>
+                <xs:element name="Form200" type="auc:Form200Type"></xs:element>
+            </xs:choice>
+            <xs:choice>
+                <xs:element name="ResourceUse000" type="auc:ResourceUse000Type"></xs:element>
+                <xs:element name="ResourceUse100" type="auc:ResourceUse100Type"></xs:element>
+            </xs:choice>
+            <xs:choice minOccurs="0">
+                <xs:element name="Systems100" type="auc:Systems100Type"></xs:element>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

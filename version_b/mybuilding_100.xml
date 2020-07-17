@@ -1,0 +1,50 @@
+<auc:Building
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:auc="http://buildingsync.net/schemas/bedes-auc/2019"
+    xsi:schemaLocation="http://buildingsync.net/schemas/bedes-auc/2019 Building.xsd">
+    <auc:Location xsi:type="auc:Location100Type">
+        <auc:CensusDivision>Mountain Division</auc:CensusDivision>
+        <auc:PostalCode>30161</auc:PostalCode>
+    </auc:Location>
+    <auc:Form xsi:type="auc:Form100Type">
+        <auc:GrossFloorArea>100</auc:GrossFloorArea>
+        <auc:FootprintShape>Rectangular</auc:FootprintShape>
+        <auc:Floors>2</auc:Floors>
+    </auc:Form>
+    <!-- <Envelope>
+        <OverallWindowToWallRatio>0.1</OverallWindowToWallRatio>
+        <OverallUValue>2</OverallUValue>
+    </Envelope> -->
+    <auc:ResourceUse xsi:type="auc:ResourceUse100Type">
+        <auc:AnnualEnergyUse>123</auc:AnnualEnergyUse>
+        <auc:AnnualEnergyUseIntensity>123</auc:AnnualEnergyUseIntensity>
+        <auc:Meters>
+            <auc:Meter>
+                <auc:ResourceType>Electricity</auc:ResourceType>
+                <auc:Readings>
+                    <auc:Interval>Month</auc:Interval>
+                    <auc:Reading>
+                        <auc:StartDate>2020-01-01</auc:StartDate>
+                        <auc:IntervalTotal>123</auc:IntervalTotal>
+                        <auc:IntervalCost>1000</auc:IntervalCost>
+                    </auc:Reading>
+                    <auc:Reading>
+                        <auc:StartDate>2020-03-01</auc:StartDate>
+                        <auc:IntervalTotal>123</auc:IntervalTotal>
+                        <auc:IntervalCost>1000</auc:IntervalCost>
+                    </auc:Reading>
+                    <auc:Reading>
+                        <auc:StartDate>2020-02-01</auc:StartDate>
+                        <auc:IntervalTotal>123</auc:IntervalTotal>
+                        <auc:IntervalCost>1000</auc:IntervalCost>
+                    </auc:Reading>
+                </auc:Readings>
+            </auc:Meter>
+        </auc:Meters>
+    </auc:ResourceUse>
+    <auc:Systems>
+        <auc:HVACSystem>
+            <auc:PrimaryType>Packaged Rooftop Air Conditioner</auc:PrimaryType>
+        </auc:HVACSystem>
+    </auc:Systems>
+</auc:Building>

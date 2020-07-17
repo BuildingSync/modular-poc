@@ -1,0 +1,17 @@
+<auc:Building
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:auc="http://buildingsync.net/schemas/bedes-auc/2019"
+    xsi:schemaLocation="http://buildingsync.net/schemas/bedes-auc/2019 Building.xsd">
+    <auc:Location000>
+        <auc:CensusDivision>Mountain Division</auc:CensusDivision>
+    </auc:Location000>
+    <auc:Form000>
+        <auc:GrossFloorArea>100</auc:GrossFloorArea>
+    </auc:Form000>
+    <!-- <Envelope>
+    </Envelope> -->
+    <auc:ResourceUse000>
+        <auc:AnnualEnergyUse>123</auc:AnnualEnergyUse>
+        <auc:AnnualEnergyUseIntensity>123</auc:AnnualEnergyUseIntensity>
+    </auc:ResourceUse000>
+</auc:Building>

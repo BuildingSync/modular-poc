@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:auc="http://buildingsync.net/schemas/bedes-auc/2019" targetNamespace="http://buildingsync.net/schemas/bedes-auc/2019" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0">
+
+    <xs:complexType name="ResourceUse000Type">
+        <xs:sequence>
+            <xs:element name="AnnualEnergyUse" type="auc:AnnualEnergyUseType"></xs:element>
+            <xs:element name="AnnualEnergyUseIntensity" type="auc:AnnualEnergyUseIntensityType"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ResourceUse100Type">
+        <xs:complexContent>
+            <xs:extension base="auc:ResourceUse000Type">
+                <xs:sequence>
+                    <xs:element name="Meters" type="auc:Meters100Type"></xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:simpleType name="AnnualEnergyUseType">
+        <xs:restriction base="xs:positiveInteger"></xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="AnnualEnergyUseIntensityType">
+        <xs:restriction base="xs:positiveInteger"></xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="Meters100Type">
+        <xs:sequence>
+            <xs:element name="Meter" type="auc:Meter100Type"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Meter100Type">
+        <xs:sequence>
+            <xs:element ref="auc:ResourceType"></xs:element>
+            <xs:element name="Readings" type="auc:Readings100Type"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="ResourceType">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="Electricity"></xs:enumeration>
+                <xs:enumeration value="Natural Gas"></xs:enumeration>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:complexType name="Readings100Type">
+        <xs:sequence>
+            <xs:sequence>
+                <xs:element name="Interval" type="auc:Interval100Type"></xs:element>
+            </xs:sequence>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Reading" type="auc:Reading100Type"></xs:element>
+            </xs:sequence>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="Interval100Type">
+        <xs:restriction base="auc:Interval200Type">
+            <xs:enumeration value="Month"></xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="Interval200Type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Month"></xs:enumeration>
+            <xs:enumeration value="Year"></xs:enumeration>
+            <xs:enumeration value="Other"></xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="Reading100Type">
+        <xs:sequence>
+            <xs:element name="StartDate" type="xs:date"></xs:element>
+            <xs:element name="IntervalTotal" type="xs:positiveInteger"></xs:element>
+            <xs:element name="IntervalCost" type="xs:positiveInteger"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

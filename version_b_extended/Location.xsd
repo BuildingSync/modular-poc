@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:auc="http://buildingsync.net/schemas/bedes-auc/2019" targetNamespace="http://buildingsync.net/schemas/bedes-auc/2019" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0">
+
+<xs:complexType name="BaseLocationType" abstract="true"></xs:complexType>
+
+    <xs:complexType name="Location000Type">
+        <xs:complexContent>
+            <xs:extension base="auc:BaseLocationType">
+                <xs:sequence>
+                    <xs:element name="CensusDivision" type="auc:CensusDivisionType"></xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="Location100Type">
+        <xs:complexContent>
+            <xs:extension base="auc:Location000Type">
+                <xs:sequence>
+                    <xs:element name="PostalCode" type="auc:PostalCodeType"></xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- extension definition -->
+    <xs:complexType name="Location200Type">
+        <xs:complexContent>
+            <xs:extension base="auc:Location100Type">
+                <xs:sequence>
+                    <xs:element name="City" type="xs:string"></xs:element>
+                    <xs:element name="State" type="auc:StateType"></xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:simpleType name="CensusDivisionType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="New England Division"></xs:enumeration>
+            <xs:enumeration value="Middle Atlantic Division"></xs:enumeration>
+            <xs:enumeration value="East North Central Division"></xs:enumeration>
+            <xs:enumeration value="West North Central Division"></xs:enumeration>
+            <xs:enumeration value="South Atlantic Division"></xs:enumeration>
+            <xs:enumeration value="East South Central Division"></xs:enumeration>
+            <xs:enumeration value="West South Central Division"></xs:enumeration>
+            <xs:enumeration value="Mountain Division"></xs:enumeration>
+            <xs:enumeration value="Pacific Division"></xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="PostalCodeType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value='[0-9]{5}(-[0-9]{4})?'/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="StateType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="AL" />
+            <xs:enumeration value="AK" />
+            <xs:enumeration value="AS" />
+            <xs:enumeration value="CO" />
+            <!-- add remaining states -->
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:auc="http://buildingsync.net/schemas/bedes-auc/2019"
+    targetNamespace="http://buildingsync.net/schemas/bedes-auc/2019"
+    elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0">
+    <!-- Note - this isn't currently used -->
+
+    <xs:complexType name="BaseTimeSeriesType" abstract="true"></xs:complexType>
+
+    <xs:complexType name="TimeSeries000Type">
+        <xs:complexContent>
+            <xs:extension base="auc:BaseTimeSeriesType">
+                <xs:sequence>
+                    <xs:element name="ResourceUseID">
+                        <xs:complexType>
+                            <xs:attribute name="IDref" type="xs:IDREF"></xs:attribute>
+                        </xs:complexType>
+                    </xs:element>
+                    <!-- note: incomplete -->
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+</xs:schema>

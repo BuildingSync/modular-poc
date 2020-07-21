@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:auc="http://buildingsync.net/schemas/bedes-auc/2019"
+    targetNamespace="http://buildingsync.net/schemas/bedes-auc/2019"
+    elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0">
+
+    <xs:include schemaLocation="./Common.xsd"></xs:include>
+
+    <!-- 
+        HVACSystem
+    -->
+    <xs:complexType name="BaseHVACSystemType" abstract="true"></xs:complexType>
+    
+    <xs:complexType name="HVACSystem000Type">
+        <xs:complexContent>
+            <xs:extension base="auc:BaseHVACSystemType">
+                <xs:sequence>
+                    <xs:element name="LinkedPremises" type="auc:LinkedPremisesType" minOccurs="0"></xs:element>
+                    <xs:element name="PrimaryHVACSystemType" type="auc:PrimaryHVACSystemTypeType"></xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="HVACSystem100Type">
+        <xs:complexContent>
+            <xs:extension base="auc:HVACSystem000Type">
+                <xs:sequence>
+                    <xs:element name="HeatingSources">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="HeatingSource" type="auc:HeatingSourceType"></xs:element>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="HeatingSourceType">
+        <xs:sequence>
+            <xs:element name="HeatingSourceType" type="auc:HeatingSourceTypeType"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="HeatingSourceTypeType">
+        <xs:choice>
+            <xs:element name="ElectricResistance" type="auc:ElectricResistanceType"></xs:element>
+            <xs:element name="Furnace" type="auc:FurnaceType"></xs:element>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="ElectricResistanceType"></xs:complexType>
+    <xs:complexType name="FurnaceType">
+        <xs:sequence>
+            <xs:element name="FurnaceType" type="auc:FurnaceTypeType"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="FurnaceTypeType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Warm air"/>
+            <xs:enumeration value="Fireplace"/>
+            <xs:enumeration value="Heating stove"/>
+            <xs:enumeration value="Built-in heater"/>
+            <xs:enumeration value="Individual space heater"/>
+            <xs:enumeration value="Other"/>
+            <xs:enumeration value="Unknown"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="PrimaryHVACSystemTypeType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Packaged Terminal Air Conditioner"/>
+            <xs:enumeration value="Four Pipe Fan Coil Unit"/>
+            <xs:enumeration value="Packaged Terminal Heat Pump"/>
+            <xs:enumeration value="Packaged Rooftop Air Conditioner"/>
+            <xs:enumeration value="Packaged Rooftop Heat Pump"/>
+            <xs:enumeration value="Packaged Rooftop VAV with Hot Water Reheat"/>
+            <xs:enumeration value="Packaged Rooftop VAV with Electric Reheat"/>
+            <xs:enumeration value="VAV with Hot Water Reheat"/>
+            <xs:enumeration value="VAV with Electric Reheat"/>
+            <xs:enumeration value="Warm Air Furnace"/>
+            <xs:enumeration value="Ventilation Only"/>
+            <xs:enumeration value="Dedicated Outdoor Air System"/>
+            <xs:enumeration value="Water Loop Heat Pump"/>
+            <xs:enumeration value="Ground Source Heat Pump"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="BaseConveyanceSystemType" abstract="true"></xs:complexType>
+
+    <!-- 
+        ConveyanceSystem
+    -->
+    <!-- TODO: try to model this -->
+    <xs:complexType name="ConveyanceSystem000Type">
+        <xs:complexContent>
+            <xs:extension base="auc:BaseConveyanceSystemType"></xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- 
+        WallSystem
+    -->
+    <xs:complexType name="BaseWallSystemType" abstract="true"></xs:complexType>
+
+    <xs:complexType name="WallSystem000Type">
+        <xs:complexContent>
+            <xs:extension base="auc:BaseWallSystemType">
+                <xs:sequence>
+                    <xs:element name="LinkedPremises" type="auc:LinkedPremisesType" minOccurs="0"></xs:element>
+                    <xs:element name="OverallWallToWindowRatio" type="auc:RatioType"></xs:element>
+                    <xs:element name="OverallUFactor" type="xs:decimal"></xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="WallSystem100Type">
+        <xs:complexContent>
+            <xs:extension base="auc:WallSystem000Type">
+                <xs:sequence>
+                    <xs:element name="ExteriorWallConstruction" type="auc:EnvelopeConstructionType"></xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:simpleType name="EnvelopeConstructionType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Masonry"/>
+            <xs:enumeration value="Structural brick"/>
+            <xs:enumeration value="Stone"/>
+            <xs:enumeration value="Concrete masonry unit"/>
+            <xs:enumeration value="Concrete solid"/>
+            <xs:enumeration value="Concrete lightweight"/>
+            <xs:enumeration value="Concrete panels"/>
+            <xs:enumeration value="Concrete poured"/>
+            <xs:enumeration value="Concrete load bearing"/>
+            <xs:enumeration value="Concrete insulated forms"/>
+            <xs:enumeration value="Concrete aerated"/>
+            <xs:enumeration value="Steel frame"/>
+            <xs:enumeration value="Wood frame"/>
+            <xs:enumeration value="Double wood frame"/>
+            <xs:enumeration value="Structural insulated panel"/>
+            <xs:enumeration value="Log solid wood"/>
+            <xs:enumeration value="Straw bale"/>
+            <xs:enumeration value="Built up"/>
+            <xs:enumeration value="Other"/>
+            <xs:enumeration value="Unknown"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="RatioType">
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"></xs:minInclusive>
+            <xs:maxInclusive value="1"></xs:maxInclusive>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

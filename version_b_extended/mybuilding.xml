@@ -1,0 +1,132 @@
+<auc:BuildingSync
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:auc="http://buildingsync.net/schemas/bedes-auc/2019"
+    xsi:schemaLocation="http://buildingsync.net/schemas/bedes-auc/2019 BuildingSync.xsd">
+    <auc:Facilities>
+        <auc:Facility>
+            <auc:Sites>
+                <auc:Site>
+                    <auc:Location xsi:type="auc:Location000Type">
+                        <auc:CensusDivision>Mountain Division</auc:CensusDivision>
+                    </auc:Location>
+                    <auc:Form xsi:type="auc:Form000Type">
+                        <auc:GrossFloorArea>500</auc:GrossFloorArea>
+                    </auc:Form>
+                    <auc:Buildings>
+
+                        <auc:Building ID="Building-A">
+                            <auc:Location xsi:type="auc:Location200Type">
+                                <auc:CensusDivision>Mountain Division</auc:CensusDivision>
+                                <auc:PostalCode>12345</auc:PostalCode>
+                                <auc:City>Denver</auc:City>
+                                <auc:State>CO</auc:State>
+                            </auc:Location>
+                            <auc:Form xsi:type="auc:Form100Type">
+                                <auc:GrossFloorArea>100</auc:GrossFloorArea>
+                                <auc:FootprintShape>Rectangular</auc:FootprintShape>
+                                <auc:Floors>2</auc:Floors>
+                                <auc:FloorToFloorHeight>20</auc:FloorToFloorHeight>
+                            </auc:Form>
+                            <auc:ResourceUse xsi:type="auc:ResourceUse100Type">
+                                <auc:AnnualEnergyUse>123</auc:AnnualEnergyUse>
+                                <auc:AnnualEnergyUseIntensity>123</auc:AnnualEnergyUseIntensity>
+                                <auc:Meters>
+                                    <auc:Meter>
+                                        <auc:ResourceType>Electricity</auc:ResourceType>
+                                        <auc:Readings>
+                                            <auc:Interval>Month</auc:Interval>
+                                            <auc:Reading>
+                                                <auc:StartDate>2020-01-01</auc:StartDate>
+                                                <auc:IntervalTotal>123</auc:IntervalTotal>
+                                                <auc:IntervalCost>123</auc:IntervalCost>
+                                            </auc:Reading>
+                                            <auc:Reading>
+                                                <auc:StartDate>2020-02-01</auc:StartDate>
+                                                <auc:IntervalTotal>123</auc:IntervalTotal>
+                                                <auc:IntervalCost>123</auc:IntervalCost>
+                                            </auc:Reading>
+                                            <auc:Reading>
+                                                <auc:StartDate>2020-03-01</auc:StartDate>
+                                                <auc:IntervalTotal>123</auc:IntervalTotal>
+                                                <auc:IntervalCost>123</auc:IntervalCost>
+                                            </auc:Reading>
+                                        </auc:Readings>
+                                    </auc:Meter>
+                                </auc:Meters>
+                            </auc:ResourceUse>
+                        </auc:Building>
+
+                        <auc:Building ID="Building-B">
+                            <auc:Location xsi:type="auc:Location200Type">
+                                <auc:CensusDivision>Mountain Division</auc:CensusDivision>
+                                <auc:PostalCode>12345</auc:PostalCode>
+                                <auc:City>Denver</auc:City>
+                                <auc:State>CO</auc:State>
+                            </auc:Location>
+                            <auc:Form xsi:type="auc:Form200Type">
+                                <auc:GrossFloorArea>400</auc:GrossFloorArea>
+                                <auc:FootprintShape>Rectangular</auc:FootprintShape>
+                                <auc:Floors>1</auc:Floors>
+                                <auc:FloorToFloorHeight>10</auc:FloorToFloorHeight>
+                                <auc:Model>
+                                    <auc:ModelType>DXF</auc:ModelType>
+                                    <auc:ModelURI>http://www.asdfg.com/mymodel.dxf</auc:ModelURI>
+                                </auc:Model>
+                            </auc:Form>
+                            <auc:ResourceUse xsi:type="auc:ResourceUse000Type">
+                                <auc:AnnualEnergyUse>123</auc:AnnualEnergyUse>
+                                <auc:AnnualEnergyUseIntensity>123</auc:AnnualEnergyUseIntensity>
+                            </auc:ResourceUse>
+                        </auc:Building>
+
+                    </auc:Buildings>
+                </auc:Site>
+            </auc:Sites>
+            <auc:Systems>
+                <auc:HVACSystems>
+                    <auc:HVACSystem xsi:type="auc:HVACSystem000Type">
+                        <auc:PrimaryHVACSystemType>Four Pipe Fan Coil Unit</auc:PrimaryHVACSystemType>
+                    </auc:HVACSystem>
+                    <auc:HVACSystem xsi:type="auc:HVACSystem100Type">
+                        <auc:LinkedPremises>
+                            <auc:Building>
+                                <auc:LinkedBuildingID IDref="Building-A"></auc:LinkedBuildingID>
+                            </auc:Building>
+                        </auc:LinkedPremises>
+                        <auc:PrimaryHVACSystemType>Packaged Terminal Air Conditioner</auc:PrimaryHVACSystemType>
+                        <auc:HeatingSources>
+                            <auc:HeatingSource>
+                                <auc:HeatingSourceType>
+                                    <auc:Furnace>
+                                        <auc:FurnaceType>Warm air</auc:FurnaceType>
+                                    </auc:Furnace>
+                                </auc:HeatingSourceType>
+                            </auc:HeatingSource>
+                        </auc:HeatingSources>
+                    </auc:HVACSystem>
+                </auc:HVACSystems>
+                <auc:WallSystems>
+                    <auc:WallSystem xsi:type="auc:WallSystem000Type">
+                        <auc:LinkedPremises>
+                            <auc:Building>
+                                <auc:LinkedBuildingID IDref="Building-A"></auc:LinkedBuildingID>
+                            </auc:Building>
+                        </auc:LinkedPremises>
+                        <auc:OverallWallToWindowRatio>0.5</auc:OverallWallToWindowRatio>
+                        <auc:OverallUFactor>123</auc:OverallUFactor>
+                    </auc:WallSystem>
+                    <auc:WallSystem xsi:type="auc:WallSystem100Type">
+                        <auc:LinkedPremises>
+                            <auc:Building>
+                                <auc:LinkedBuildingID IDref="Building-B"></auc:LinkedBuildingID>
+                            </auc:Building>
+                        </auc:LinkedPremises>
+                        <auc:OverallWallToWindowRatio>0.5</auc:OverallWallToWindowRatio>
+                        <auc:OverallUFactor>123</auc:OverallUFactor>
+                        <auc:ExteriorWallConstruction>Masonry</auc:ExteriorWallConstruction>
+                    </auc:WallSystem>
+                </auc:WallSystems>
+            </auc:Systems>
+        </auc:Facility>
+    </auc:Facilities>
+</auc:BuildingSync>

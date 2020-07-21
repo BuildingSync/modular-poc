@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:auc="http://buildingsync.net/schemas/bedes-auc/2019"
+    targetNamespace="http://buildingsync.net/schemas/bedes-auc/2019"
+    elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0">
+
+    <xs:include schemaLocation="./Location.xsd"></xs:include>
+    <xs:include schemaLocation="./Form.xsd"></xs:include>
+    <xs:include schemaLocation="./ResourceUse.xsd"></xs:include>
+    <xs:include schemaLocation="./TimeSeries.xsd"></xs:include>
+    <xs:include schemaLocation="./Systems.xsd"></xs:include>
+
+    <xs:element name="BuildingSync" type="auc:BuildingSyncType"></xs:element>
+
+    <xs:complexType name="BuildingSyncType">
+        <xs:sequence>
+            <xs:element name="Facilities">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Facility" type="auc:FacilityType" maxOccurs="unbounded"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="FacilityType">
+        <xs:sequence>
+            <!-- note: incomplete - unsure if previous org is best for modular approach -->
+            <!-- <xs:element name="Reports">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Report" type="auc:ReportType" maxOccurs="unbounded"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element> -->
+            <xs:element name="Sites">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Site" type="auc:SiteType" maxOccurs="unbounded"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Systems" type="auc:SystemsType" minOccurs="0"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="ID" type="xs:ID"></xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="SiteType">
+        <xs:sequence>
+            <xs:element name="Location" type="auc:BaseLocationType" minOccurs="0"></xs:element>
+            <xs:element name="Form" type="auc:BaseFormType" minOccurs="0"></xs:element>
+            <xs:element name="Buildings">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Building" type="auc:BuildingType" maxOccurs="unbounded"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="ID" type="xs:ID"></xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="ReportType">
+        <xs:sequence>
+            <xs:element name="Scenarios">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Scenario" type="auc:ScenarioType" maxOccurs="unbounded"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ScenarioType">
+        <xs:sequence>
+            <xs:element name="ResourceUses">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ResourceUse" type="auc:ResourceUseType"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="TimeSeriesData">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="TimeSeries" type="auc:BaseTimeSeriesType" maxOccurs="unbounded"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ResourceUseType">
+        <xs:sequence>
+            <xs:element name="EnergyResource" type="auc:FuelType"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="FuelType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Electricity"/>
+            <xs:enumeration value="Electricity-Exported"/>
+            <xs:enumeration value="Electricity-Onsite generated"/>
+            <xs:enumeration value="Natural gas"/>
+            <xs:enumeration value="Fuel oil"/>
+            <xs:enumeration value="Fuel oil no 1"/>
+            <xs:enumeration value="Fuel oil no 2"/>
+            <xs:enumeration value="Fuel oil no 4"/>
+            <xs:enumeration value="Fuel oil no 5"/>
+            <xs:enumeration value="Fuel oil no 5 (light)"/>
+            <xs:enumeration value="Fuel oil no 5 (heavy)"/>
+            <xs:enumeration value="Fuel oil no 6"/>
+            <xs:enumeration value="Fuel oil no 5 and no 6"/>
+            <xs:enumeration value="District steam"/>
+            <xs:enumeration value="District hot water"/>
+            <xs:enumeration value="District chilled water"/>
+            <xs:enumeration value="Propane"/>
+            <xs:enumeration value="Liquid propane"/>
+            <xs:enumeration value="Kerosene"/>
+            <xs:enumeration value="Diesel"/>
+            <xs:enumeration value="Coal"/>
+            <xs:enumeration value="Coal anthracite"/>
+            <xs:enumeration value="Coal bituminous"/>
+            <xs:enumeration value="Coke"/>
+            <xs:enumeration value="Wood"/>
+            <xs:enumeration value="Wood pellets"/>
+            <xs:enumeration value="Hydropower"/>
+            <xs:enumeration value="Biofuel"/>
+            <xs:enumeration value="Biofuel B5"/>
+            <xs:enumeration value="Biofuel B10"/>
+            <xs:enumeration value="Biofuel B20"/>
+            <xs:enumeration value="Wind"/>
+            <xs:enumeration value="Geothermal"/>
+            <xs:enumeration value="Solar"/>
+            <xs:enumeration value="Biomass"/>
+            <xs:enumeration value="Hydrothermal"/>
+            <xs:enumeration value="Dry steam"/>
+            <xs:enumeration value="Flash steam"/>
+            <xs:enumeration value="Ethanol"/>
+            <xs:enumeration value="Biodiesel"/>
+            <xs:enumeration value="Waste heat"/>
+            <xs:enumeration value="Dual fuel"/>
+            <xs:enumeration value="Gasoline"/>
+            <xs:enumeration value="Thermal-Exported"/>
+            <xs:enumeration value="Thermal-Onsite generated"/>
+            <xs:enumeration value="Other delivered-Exported"/>
+            <xs:enumeration value="Other delivered-Onsite generated"/>
+            <xs:enumeration value="Other metered-Exported"/>
+            <xs:enumeration value="Other metered-Onsite generated"/>
+            <xs:enumeration value="Other"/>
+            <xs:enumeration value="Unknown"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="SystemsType">
+        <xs:sequence>
+            <xs:element name="HVACSystems" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="HVACSystem" type="auc:BaseHVACSystemType" maxOccurs="unbounded"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="WallSystems" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="WallSystem" type="auc:BaseWallSystemType" maxOccurs="unbounded"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="ConveyanceSystems" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ConveyanceSystem" type="auc:BaseConveyanceSystemType" maxOccurs="unbounded"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="BuildingType">
+        <xs:sequence>
+            <xs:element name="Location" type="auc:BaseLocationType" minOccurs="0"></xs:element>
+            <xs:element name="Form" type="auc:BaseFormType" minOccurs="0"></xs:element>
+            <xs:element name="ResourceUse" type="auc:BaseResourceUseType" minOccurs="0"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="ID" type="xs:ID"></xs:attribute>
+    </xs:complexType>
+</xs:schema>
